@@ -52,14 +52,9 @@ get_subvals(Base, [H|T])   when is_tuple(Base)  ->
 
 try_module(Module, Func) when is_atom(Module) ->
   io:format("In try_module with atom - ~p,~p~n",[Module,Func]),
-    case code:is_loaded(Module) of
-	    {file,_} ->
-            try_func(Module, Func);
-      _ ->
- 	      case code:load(Module) of
-            {file, _}   ->  try_func(Module, Func);
-            false       ->  undefined
-        end
+    case code:ensure_loaded(Module) of
+	    {module,_} -> try_func(Module, Func);
+        _ -> undefined
     end;
 try_module(_Module,_Func)  -> undefined.
 
