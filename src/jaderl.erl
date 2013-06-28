@@ -44,7 +44,7 @@ testit() ->
 -define(IS_NAME_CHAR(C),  ((C >= $a andalso C =< $z)
                     orelse (C >= $A andalso C =< $Z) 
                     orelse (C >= $0 andalso C =< $9)
-                    orelse  C == $_ orelse  C == $- orelse C == $.)).
+                    orelse  C == $_ orelse  C == $-)).
 
 -define(IS_ATTNAME_CHAR(C),   ((C >= $a andalso C =< $z)
                         orelse (C >= $A andalso C =< $Z) 
